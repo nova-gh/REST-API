@@ -17,10 +17,16 @@ app.use(express.static("public"));
 //==Mongoose Connection
 
 mongoose.connect(
-	"mongodb+srv://admin:admin413@cluster0.hgnmf.mongodb.net/todolistDB",
+	"mongodb+srv://admin:admin413@cluster0.hgnmf.mongodb.net/wiki",
 	{ useNewUrlParser: true, useUnifiedTopology: true }
 );
-
+//article schema
+const articleSchema = {
+	title: String,
+	content: String,
+};
+//article model
+const Article = mongoose.model("Article", articleSchema);
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
 });
