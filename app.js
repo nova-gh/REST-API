@@ -14,7 +14,12 @@ app.use(
 );
 app.use(express.static("public"));
 
-//TODO
+//==Mongoose Connection
+
+mongoose.connect(
+	"mongodb+srv://admin:admin413@cluster0.hgnmf.mongodb.net/todolistDB",
+	{ useNewUrlParser: true, useUnifiedTopology: true }
+);
 
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
