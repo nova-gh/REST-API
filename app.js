@@ -27,6 +27,17 @@ const articleSchema = {
 };
 //article model
 const Article = mongoose.model("Article", articleSchema);
+//get route
+app.get("/articles", (res, req) => {
+	Article.find((err, foundArticles) => {
+		if (err) {
+			console.log(err);
+		} else {
+			console.log(foundArticles);
+		}
+	});
+});
+
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
 });
