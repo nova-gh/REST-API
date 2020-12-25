@@ -17,7 +17,7 @@ app.use(express.static("public"));
 //==Mongoose Connection
 
 mongoose.connect(
-	"mongodb+srv://admin:admin413@cluster0.hgnmf.mongodb.net/wiki",
+	"mongodb+srv://admin:admin413@cluster0.hgnmf.mongodb.net/wikiDB",
 	{ useNewUrlParser: true, useUnifiedTopology: true }
 );
 //article schema
@@ -27,17 +27,35 @@ const articleSchema = {
 };
 //article model
 const Article = mongoose.model("Article", articleSchema);
+
 //get route
-app.get("/articles", (res, req) => {
+app.get("/articles", (req, res) => {
 	Article.find((err, foundArticles) => {
-		if (err) {
-			console.log(err);
+		if (!err) {
+			res.send(foundArticles);
+			// console.log(foundArticles);
+			res.send("Successfully found articles");
 		} else {
-			console.log(foundArticles);
+			res.send(err);
 		}
 	});
 });
-
+app.post("/articles", (req, res) => {
+	//grabbing data
+	// console.log(req.body.title);
+	// console.log(req.body.content);
+	const newArticle = new Article({
+		title: req.body.title,
+		content: req.body.content,
+	});
+	newArticle.save((err) => {
+		if (!err) {
+			res.send("Articles saved to DB");
+		} else {
+			res.send(err);
+		}
+	});
+});
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
 });
