@@ -34,7 +34,7 @@ app.get("/articles", (req, res) => {
 		if (!err) {
 			res.send(foundArticles);
 			// console.log(foundArticles);
-			res.send("Successfully found articles");
+			// res.send("Successfully found articles");
 		} else {
 			res.send(err);
 		}
@@ -51,6 +51,16 @@ app.post("/articles", (req, res) => {
 	newArticle.save((err) => {
 		if (!err) {
 			res.send("Articles saved to DB");
+		} else {
+			res.send(err);
+		}
+	});
+});
+//delete http
+app.delete("/articles", (req, res) => {
+	Article.deleteMany((err) => {
+		if (!err) {
+			res.send("All articles deleted from DB");
 		} else {
 			res.send(err);
 		}
