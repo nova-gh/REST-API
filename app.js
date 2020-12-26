@@ -65,8 +65,7 @@ app
 	});
 //Specific route target: /articles/name
 app.route("/articles/:articleTitle").get((req, res) => {
-	const reqTitle = req.params.articleTitle;
-	Article.findOne({ title: reqTitle }, (err, foundArticle) => {
+	Article.findOne({ title: req.params.articleTitle }, (err, foundArticle) => {
 		if (foundArticle) {
 			res.send(foundArticle);
 			// console.log(foundArticles);
@@ -74,9 +73,7 @@ app.route("/articles/:articleTitle").get((req, res) => {
 		} else {
 			res.send("No articles matching that title was found");
 		}
-	})
-		.post((req, res) => {})
-		.delete((req, res) => {});
+	});
 });
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
