@@ -64,17 +64,38 @@ app
 		});
 	});
 //Specific route target: /articles/name
-app.route("/articles/:articleTitle").get((req, res) => {
-	Article.findOne({ title: req.params.articleTitle }, (err, foundArticle) => {
-		if (foundArticle) {
-			res.send(foundArticle);
-			// console.log(foundArticles);
-			// res.send("Successfully found articles");
-		} else {
-			res.send("No articles matching that title was found");
-		}
+app
+	.route("/articles/:articleTitle")
+	.get((req, res) => {
+		Article.findOne({ title: req.params.articleTitle }, (err, foundArticle) => {
+			if (foundArticle) {
+				res.send(foundArticle);
+				// console.log(foundArticles);
+				// res.send("Successfully found articles");
+			} else {
+				res.send("No articles matching that title was found");
+			}
+		});
+	})
+	.put((req, res) => {
+		Article.update(
+			{ title: req.params.articleTitle },
+			{ title: req.body.title, content: req.body.content },
+			{ overwrite: true },
+			(err) => {
+				if (!err) {
+					//when using put method: it updates the whole thing.
+					//Ex: If u put request on just the content it will wipe out everthing and just put content
+					//put request: content: "The first rule...."
+					//title: Jack Bauer, content:"Jack Bauer once stepped into quicksand.."
+					// new update: title:, content:"The first rule.."
+					res.send("Success: Updated Article ");
+				} else {
+					res.send("Failed: Update Article ");
+				}
+			}
+		);
 	});
-});
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
 });
