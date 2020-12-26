@@ -66,7 +66,7 @@ app
 //Specific route target: /articles/name
 app.route("/articles/:articleTitle").get((req, res) => {
 	const reqTitle = req.params.articleTitle;
-	Article.findOne({ title: articleTitle }, (err, foundArticle) => {
+	Article.findOne({ title: reqTitle }, (err, foundArticle) => {
 		if (foundArticle) {
 			res.send(foundArticle);
 			// console.log(foundArticles);
