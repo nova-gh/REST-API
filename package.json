@@ -1,25 +1,30 @@
 {
-  "name": "wiki-rest-api",
-  "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nova-gh/Wiki-REST-API.git"
-  },
-  "author": "Nova G",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nova-gh/Wiki-REST-API/issues"
-  },
-  "homepage": "https://github.com/nova-gh/Wiki-REST-API#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "ejs": "^3.1.5",
-    "express": "^4.17.1",
-    "mongoose": "^5.11.8"
-  }
+	"name": "wiki-rest-api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "app.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/nova-gh/Wiki-REST-API.git"
+	},
+	"author": "Nova G",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/nova-gh/Wiki-REST-API/issues"
+	},
+	"homepage": "https://github.com/nova-gh/Wiki-REST-API#readme",
+	"engines": {
+		"node": "14.15.1",
+		"npm": "6.14.10"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"ejs": "^3.1.5",
+		"express": "^4.17.1",
+		"mongoose": "^5.11.8"
+	}
 }
