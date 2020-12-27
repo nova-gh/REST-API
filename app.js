@@ -95,7 +95,21 @@ app
 				}
 			}
 		);
+	})
+	.patch((req, res) => {
+		Article.update(
+			{ title: req.params.articleTitle },
+			{ $set: req.body }, //lets user update specifc data
+			(err) => {
+				if (!err) {
+					res.send("Succes: Updated Article");
+				} else {
+					res.send("Failed: Update Article");
+				}
+			}
+		);
 	});
+
 app.listen(port, () => {
 	console.log(`Server is up! Local Port: ${port}!`);
 });
