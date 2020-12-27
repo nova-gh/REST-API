@@ -85,7 +85,7 @@ app
 			(err) => {
 				if (!err) {
 					//when using put method: it updates the whole thing.
-					//Ex: If u put request on just the content it will wipe out everthing and just put content
+					//Ex: If u put request on just the content it will wipe out everything and just put content
 					//put request: content: "The first rule...."
 					//title: Jack Bauer, content:"Jack Bauer once stepped into quicksand.."
 					// new update: title:, content:"The first rule.."
@@ -99,10 +99,10 @@ app
 	.patch((req, res) => {
 		Article.update(
 			{ title: req.params.articleTitle },
-			{ $set: req.body }, //lets user update specifc data
+			{ $set: req.body }, //lets user update specific data
 			(err) => {
 				if (!err) {
-					res.send("Succes: Updated Article");
+					res.send("Success: Updated Article");
 				} else {
 					res.send("Failed: Update Article");
 				}
@@ -112,7 +112,7 @@ app
 	.delete((req, res) => {
 		Article.deleteOne({ title: req.params.articleTitle }, (err) => {
 			if (!err) {
-				res.send("Sucess: Deleted Article");
+				res.send("Success: Deleted Article");
 			} else {
 				res.send("Fail: Deleting Article");
 			}
