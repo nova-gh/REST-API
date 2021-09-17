@@ -30,7 +30,7 @@ const articleSchema = {
 const Article = mongoose.model("Article", articleSchema);
 // (/articles chained route)
 app
-  .route("/articles")
+  .route("/")
   .get((req, res) => {
     Article.find((err, foundArticles) => {
       if (!err) {
@@ -66,7 +66,7 @@ app
   });
 //Specific route target: /articles/name
 app
-  .route("/articles/:articleTitle")
+  .route("/:articleTitle")
   .get((req, res) => {
     Article.findOne({ title: req.params.articleTitle }, (err, foundArticle) => {
       if (foundArticle) {
